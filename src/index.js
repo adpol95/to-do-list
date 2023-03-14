@@ -7,7 +7,7 @@ const cors = require('./modules/core/cors');
 const router = require('./modules/home/front/routes');
 const db = require('./modules/core/db');
 
-const PORT = 5000;
+const PORT = 3000;
 
 cors(app);
 bodyPrs(app);
