@@ -7,7 +7,7 @@ WORKDIR /app
 # Copy the application files into the working directory
 COPY ../.. /app
 
-EXPOSE 3000/tcp
+EXPOSE 5000/tcp
 # Install the application dependencies
 RUN npm install
 
