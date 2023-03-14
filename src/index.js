@@ -10,9 +10,9 @@ const db = require('./modules/core/db');
 const PORT = 5000;
 
 //cors(app);
+db();
 bodyPrs(app);
 router(app);
-db();
 //errorHandler(app);
 //loggerM(app);
 
