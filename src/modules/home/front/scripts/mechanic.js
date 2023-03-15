@@ -1,25 +1,27 @@
-const evidence = localStorage.key(0) ? JSON.parse(localStorage.getItem("24.02.2023")) : [
-  {
-    id: Math.floor(Math.random() * 100 + 1) + '',
-    value: "Repeat JS",
-    line: false
-  },
-  {
-    id: Math.floor(Math.random() * 100 + 1) + '',
-    value: "Repeat CSS & HTML",
-    line: false
-  },
-  {
-    id: Math.floor(Math.random() * 100 + 1) + '',
-    value: "Repeat React",
-    line: false
-  },
-];
+// const evidence = localStorage.key(0) ? JSON.parse(localStorage.getItem("24.02.2023")) : [
+//   {
+//     id: Math.floor(Math.random() * 100 + 1) + '',
+//     value: "Repeat JS",
+//     line: false
+//   },
+//   {
+//     id: Math.floor(Math.random() * 100 + 1) + '',
+//     value: "Repeat CSS & HTML",
+//     line: false
+//   },
+//   {
+//     id: Math.floor(Math.random() * 100 + 1) + '',
+//     value: "Repeat React",
+//     line: false
+//   },
+// ];
 
+let evidence;
 fetch('https://todolist-adpol95.b4a.run/task')
   .then((res) => res.json())
   .then((res) => {
-    console.log('200', res);
+    console.log('200');
+    evidence = res;
   })
   .catch((err) => console.log(err));
 
@@ -68,18 +70,18 @@ getList.addEventListener("click", (event) => {
 const winText = document.getElementById("window");
 const butt = document.getElementById("adderTasks");
 butt.addEventListener("click", () => {
-    evidence.push({
-        id: Math.floor(Math.random() * 100 + 1) + '',
-        value: winText.value,
-        line: false
-    })
-    winText.value = '';
-    render();
-    storage();
+  evidence.push({
+    id: Math.floor(Math.random() * 100 + 1) + '',
+    value: winText.value,
+    line: false
+  })
+  winText.value = '';
+  render();
+  storage();
 })
 
 function storage() {
-    localStorage.setItem("24.02.2023", JSON.stringify(evidence));
+  localStorage.setItem("24.02.2023", JSON.stringify(evidence));
 }
 
 const currentDate = new Date();
