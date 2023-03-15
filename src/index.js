@@ -1,12 +1,12 @@
 const express = require('express');
 const app = express();
-const bodyPrs = require('./core/bodyParser');
+const bodyPrs = require('./modules/core/bodyParser');
 //const loggerM = require('./modules/core/logger');
-const errorHandler = require('./core/errorHandler');
+const errorHandler = require('./modules/core/errorHandler');
 //const cors = require('./modules/core/cors');
-const { router } = require('./core/routes');
-const db = require('./core/db');
-const { dirAdaptive } = require('./core/dirAdaptive')
+const { router } = require('./modules/core/routes');
+const db = require('./modules/core/db');
+const { dirAdaptive } = require('./modules/core/dirAdaptive')
 
 const PORT = 5000;
 
