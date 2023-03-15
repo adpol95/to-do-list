@@ -1,11 +1,7 @@
-//const homeRoute = require('../home/homePage');
-const express = require("express");
+const homeRoute = require('../home/Router');
+
 function router(app) {
-  app.use(express.static(__dirname + '../home/front'));
-  app.get('/', (req, res) => {
-    res.status(200).sendFile(__dirname + 'index.html');
-  });
-  // app.use('/', homeRoute)
+  app.use('/', homeRoute)
 }
 
-module.exports = { router };
+module.exports = {router};

@@ -6,6 +6,7 @@ const bodyPrs = require('./core/bodyParser');
 //const cors = require('./modules/core/cors');
 const { router } = require('./core/routes');
 const db = require('./core/db');
+const { dirAdaptive } = require('./core/dirAdaptive')
 
 const PORT = 5000;
 
@@ -13,6 +14,7 @@ const PORT = 5000;
 db();
 bodyPrs(app);
 router(app);
+dirAdaptive(app);
 //errorHandler(app);
 //loggerM(app);
 
