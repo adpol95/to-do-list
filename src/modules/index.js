@@ -4,7 +4,7 @@ const bodyPrs = require('./core/bodyParser');
 //const loggerM = require('./modules/core/logger');
 //const errorHandler = require('./modules/core/errorHandler');
 //const cors = require('./modules/core/cors');
-const { router } = require('./home/front/routes');
+const { router } = require('./core/routes');
 const db = require('./core/db');
 
 const PORT = 5000;
