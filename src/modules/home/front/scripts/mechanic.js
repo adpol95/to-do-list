@@ -1,22 +1,27 @@
-// const evidence = localStorage.key(0) ? JSON.parse(localStorage.getItem("24.02.2023")) : [
-//   {
-//     id: Math.floor(Math.random() * 100 + 1) + '',
-//     value: "Repeat JS",
-//     line: false
-//   },
-//   {
-//     id: Math.floor(Math.random() * 100 + 1) + '',
-//     value: "Repeat CSS & HTML",
-//     line: false
-//   },
-//   {
-//     id: Math.floor(Math.random() * 100 + 1) + '',
-//     value: "Repeat React",
-//     line: false
-//   },
-// ];
+const evidence = localStorage.key(0) ? JSON.parse(localStorage.getItem("24.02.2023")) : [
+  {
+    id: Math.floor(Math.random() * 100 + 1) + '',
+    value: "Repeat JS",
+    line: false
+  },
+  {
+    id: Math.floor(Math.random() * 100 + 1) + '',
+    value: "Repeat CSS & HTML",
+    line: false
+  },
+  {
+    id: Math.floor(Math.random() * 100 + 1) + '',
+    value: "Repeat React",
+    line: false
+  },
+];
 
-const evidence = fetch('https://todolist-adpol95.b4a.run/task');
+fetch('https://todolist-adpol95.b4a.run/task')
+  .then((res) => res.json())
+  .then((res) => {
+    console.log('200', res);
+  })
+  .catch((err) => console.log(err));
 
 const getList = document.getElementById("mainList");
 
