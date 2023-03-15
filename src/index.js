@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 const bodyPrs = require('./modules/core/bodyParser');
-//const loggerM = require('./modules/core/logger');
+const loggerM = require('./modules/core/logger');
 const errorHandler = require('./modules/core/errorHandler');
 const cors = require('./modules/core/cors');
 const { router } = require('./modules/core/routes');
@@ -16,7 +16,7 @@ bodyPrs(app);
 router(app);
 dirAdaptive(app);
 errorHandler(app);
-//loggerM(app);
+loggerM(app);
 
 
 app.listen(PORT, () => {
