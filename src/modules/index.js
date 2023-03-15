@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const bodyPrs = require('./core/bodyParser');
 //const loggerM = require('./modules/core/logger');
-//const errorHandler = require('./modules/core/errorHandler');
+const errorHandler = require('./core/errorHandler');
 //const cors = require('./modules/core/cors');
 const { router } = require('./core/routes');
 const db = require('./core/db');
@@ -15,7 +15,7 @@ db();
 bodyPrs(app);
 router(app);
 dirAdaptive(app);
-//errorHandler(app);
+errorHandler(app);
 //loggerM(app);
 
 
