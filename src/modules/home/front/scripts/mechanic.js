@@ -38,7 +38,6 @@ getList.addEventListener("click", (event) => {
         .then((res) => res.json())
         .then((evidence) => {
           const curTask = evidence.find(el => el._id === tId);
-          console.log(typeof curTask.line);
           fetch('https://todolist-adpol95.b4a.run/task/' + tId, {
             method: "PATCH", // *GET, POST, PUT, DELETE, etc.
             mode: "cors",
