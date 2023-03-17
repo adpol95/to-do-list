@@ -1,7 +1,7 @@
 const getList = document.getElementById("mainList");
 
 function render() {
-  fetch('https://todolist-adpol95.b4a.run/task')
+  fetch('http://localhost:5000/task')
     .then((res) => res.json())
     .then((evidence) => {
       getList.innerText = "";
@@ -34,12 +34,12 @@ render();
 getList.addEventListener("click", (event) => {
     if (event.target.nodeName === "BUTTON" && event.target.innerText === "Done") {
       const tId = event.target.id;
-      fetch('https://todolist-adpol95.b4a.run/task')
+      fetch('http://localhost:5000/task')
         .then((res) => res.json())
         .then((evidence) => {
           const curTask = evidence.find(el => el._id === tId);
           console.log(typeof curTask.line);
-          fetch('https://todolist-adpol95.b4a.run/task/' + tId, {
+          fetch('http://localhost:5000/task' + tId, {
             method: "PATCH", // *GET, POST, PUT, DELETE, etc.
             mode: "cors",
             cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
