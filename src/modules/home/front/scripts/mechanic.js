@@ -32,14 +32,13 @@ render();
 // storage();
 
 getList.addEventListener("click", (event) => {
-    if (event.target.nodeName === "BUTTON" && event.target.innerText === "Done") {
+    if (event.target.nodeName === "BUTTON" ) {
       const tId = event.target.id;
       fetch('http://localhost:5000/task')
         .then((res) => res.json())
         .then((evidence) => {
           const curTask = evidence.find(el => el._id === tId);
-          console.log(typeof curTask.line);
-          fetch('http://localhost:5000/task' + tId, {
+          fetch('http://localhost:5000/task/' + tId, {
             method: "PATCH", // *GET, POST, PUT, DELETE, etc.
             mode: "cors",
             cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
@@ -50,23 +49,17 @@ getList.addEventListener("click", (event) => {
             },
             redirect: "follow", // manual, *follow, error
             referrerPolicy: "no-referrer", // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
-            body: JSON.stringify({ line: !curTask.line }), // body data type must match "Content-Type" header
+            body: JSON.stringify({line: !curTask.line}), // body data type must match "Content-Type" header
           })
-            .then((res) => {
+            .then(() => {
               console.log('Task updated')
-              return res
+              render()
             })
             .catch((err) => console.log(err))
         })
         .catch((err) => console.log(err))
-      // evidence.forEach((el, i) => {
-      //   if (tId === el.id) {
-      //     event.target.innerText === "Done" ? el.line = !el.line : evidence.splice(i, 1)
-      //   }
-      // });
     }
 
-    render()
     // storage();
   }
 );
