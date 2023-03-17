@@ -1,7 +1,7 @@
 const { Router } = require('express');
 const getTask = require('./taskGetAll')
 const addTask = require('./taskRegister')
-const taskDelete = require('./taskDelete');
+const taskDelete = require('./taskDeleteById');
 const taskChangeById = require('./taskChangeById')
 const router = Router();
 
