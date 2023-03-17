@@ -31,23 +31,24 @@ fetch('https://todolist-adpol95.b4a.run/task')
     storage();
 
     getList.addEventListener("click", (event) => {
-      if (event.target.nodeName === "BUTTON") {
-        //const tId = event.target.id;
-        // fetch('https://todolist-adpol95.b4a.run/task:tID', {
-        //   method: "PATCH", // *GET, POST, PUT, DELETE, etc.
-        //   mode: "cors", // no-cors, *cors, same-origin
-        //   cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
-        //   credentials: "same-origin", // include, *same-origin, omit
-        //   headers: {
-        //     "Content-Type": "application/json",
-        //     // 'Content-Type': 'application/x-www-form-urlencoded',
-        //   },
-        //   redirect: "follow", // manual, *follow, error
-        //   referrerPolicy: "no-referrer", // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
-        //   body: JSON.stringify(data), // body data type must match "Content-Type" header
-        // })
-
-
+      if (event.target.nodeName === "BUTTON" &&  event.target.innerText === "Done") {
+        const tId = event.target.id;
+        const curTask = evidence.find(el => el._id === tId);
+        fetch('https://todolist-adpol95.b4a.run/task/' + tId, {
+          method: "PATCH", // *GET, POST, PUT, DELETE, etc.
+          mode: "cors", // no-cors, *cors, same-origin
+          cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
+          credentials: "same-origin", // include, *same-origin, omit
+          headers: {
+            "Content-Type": "application/json",
+            // 'Content-Type': 'application/x-www-form-urlencoded',
+          },
+          redirect: "follow", // manual, *follow, error
+          referrerPolicy: "no-referrer", // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+          body: JSON.stringify({line: !curTask.line}), // body data type must match "Content-Type" header
+        })
+          .then((res) => console.log(res))
+          .catch((err) => console.log(err))
         // evidence.forEach((el, i) => {
         //   if (tId === el.id) {
         //     event.target.innerText === "Done" ? el.line = !el.line : evidence.splice(i, 1)
