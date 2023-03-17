@@ -1,7 +1,7 @@
-const User = require('./Model');
+const Task = require('./Model');
 
 function taskRegister(req, res) {
-  const user = new User({
+  const user = new Task({
     value: req.body.value,
     line: req.body.line,
   });

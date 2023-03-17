@@ -1,7 +1,7 @@
 const getList = document.getElementById("mainList");
 
 function render() {
-  fetch('https://todolist-adpol95.b4a.run/task')
+  fetch('http://localhost:5000/task')
     .then((res) => res.json())
     .then((evidence) => {
       getList.innerText = "";
@@ -29,17 +29,17 @@ function render() {
 }
 
 render();
-// storage();
 
 getList.addEventListener("click", (event) => {
-    if (event.target.nodeName === "BUTTON" && event.target.innerText === "Done") {
+    if (event.target.nodeName === "BUTTON") {
+      const patOrDel = event.target.innerText === "Done";
       const tId = event.target.id;
-      fetch('https://todolist-adpol95.b4a.run/task')
+      fetch('http://localhost:5000/task')
         .then((res) => res.json())
         .then((evidence) => {
-          const curTask = evidence.find(el => el._id === tId);
-          fetch('https://todolist-adpol95.b4a.run/task/' + tId, {
-            method: "PATCH", // *GET, POST, PUT, DELETE, etc.
+          const curTask = patOrDel ? evidence.find(el => el._id === tId) : '';
+          fetch('http://localhost:5000/task/' + tId, {
+            method: patOrDel ? "PATCH" : "DELETE", // *GET, POST, PUT, DELETE, etc.
             mode: "cors",
             cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
             credentials: "same-origin", // include, *same-origin, omit
@@ -49,43 +49,43 @@ getList.addEventListener("click", (event) => {
             },
             redirect: "follow", // manual, *follow, error
             referrerPolicy: "no-referrer", // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
-            body: JSON.stringify({ line: !curTask.line }), // body data type must match "Content-Type" header
+            body: JSON.stringify(patOrDel ? {line: !curTask.line} : undefined), // body data type must match "Content-Type" header
           })
-            .then((res) => {
-              console.log('Task updated')
-              return res
+            .then(() => {
+              console.log(patOrDel ? 'Task updated' : 'Task deleted')
+              render()
             })
             .catch((err) => console.log(err))
         })
         .catch((err) => console.log(err))
-      // evidence.forEach((el, i) => {
-      //   if (tId === el.id) {
-      //     event.target.innerText === "Done" ? el.line = !el.line : evidence.splice(i, 1)
-      //   }
-      // });
     }
-
-    render()
-    // storage();
   }
 );
 
-// const winText = document.getElementById("window");
-// const butt = document.getElementById("adderTasks");
-// butt.addEventListener("click", () => {
-//   evidence.push({
-//     _id: Math.floor(Math.random() * 100 + 1) + '',
-//     value: winText.value,
-//     line: false
-//   })
-//   winText.value = '';
-//   render();
-//   storage();
-// })
-//
-// function storage() {
-//   localStorage.setItem("24.02.2023", JSON.stringify(evidence));
-// }
+const winText = document.getElementById("window");
+const butt = document.getElementById("adderTasks");
+butt.addEventListener("click", () => {
+  fetch('http://localhost:5000/task', {
+    method: "POST", // *GET, POST, PUT, DELETE, etc.
+    mode: "cors",
+    cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
+    credentials: "same-origin", // include, *same-origin, omit
+    headers: {
+      "Content-Type": "application/json",
+      // 'Content-Type': 'application/x-www-form-urlencoded',
+    },
+    redirect: "follow", // manual, *follow, error
+    referrerPolicy: "no-referrer", // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+    body: JSON.stringify({value: winText.value, line: false}), // body data type must match "Content-Type" header
+  })
+    .then(() => {
+      console.log('Task added')
+      render()
+    })
+    .catch((err) => console.log(err))
+
+  winText.value = '';
+})
 
 const currentDate = new Date();
 const getDate = document.getElementsByClassName("date")[0];

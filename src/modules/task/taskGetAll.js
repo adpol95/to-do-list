@@ -1,7 +1,7 @@
-const User = require('./Model');
+const Task = require('./Model');
 
 function taskGetAll(req, res) {
-  User
+  Task
     .find()
     .exec()
     .then((resp) => {

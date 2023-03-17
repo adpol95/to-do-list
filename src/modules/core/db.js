@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const url = 'mongodb+srv://adpol95:MlWkg1a2F5o8FtCX@cluster0.izr2wlk.mongodb.net/toDoList?retryWrites=true&w=majority';
+const url = 'mongodb://127.0.0.1:27017/ToDoList';
 const options = {
   useNewUrlParser: true,
   useUnifiedTopology: true,
