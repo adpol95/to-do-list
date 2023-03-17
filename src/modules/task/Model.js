@@ -8,7 +8,7 @@ const userSchema = new Schema({
     unique: true,
   },
   line: {
-    type: String,
+    type: Boolean,
     required: true,
   },
 });
