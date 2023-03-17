@@ -40,7 +40,6 @@ getList.addEventListener("click", (event) => {
           const curTask = evidence.find(el => el._id === tId);
           fetch('https://todolist-adpol95.b4a.run/task/' + tId, {
             method: "PATCH", // *GET, POST, PUT, DELETE, etc.
-            mode: "cors", // no-cors, *cors, same-origin
             cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
             credentials: "same-origin", // include, *same-origin, omit
             headers: {
