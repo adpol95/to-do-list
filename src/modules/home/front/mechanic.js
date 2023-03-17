@@ -1,7 +1,7 @@
 const getList = document.getElementById("mainList");
 
 function render() {
-  fetch('http://localhost:5000/task')
+  fetch('mongodb+srv://adpol95:MlWkg1a2F5o8FtCX@cluster0.izr2wlk.mongodb.net/toDoList?retryWrites=true&w=majority/task')
     .then((res) => res.json())
     .then((evidence) => {
       getList.innerText = "";
@@ -34,11 +34,11 @@ getList.addEventListener("click", (event) => {
     if (event.target.nodeName === "BUTTON") {
       const patOrDel = event.target.innerText === "Done";
       const tId = event.target.id;
-      fetch('http://localhost:5000/task')
+      fetch('mongodb+srv://adpol95:MlWkg1a2F5o8FtCX@cluster0.izr2wlk.mongodb.net/toDoList?retryWrites=true&w=majority/task')
         .then((res) => res.json())
         .then((evidence) => {
           const curTask = patOrDel ? evidence.find(el => el._id === tId) : '';
-          fetch('http://localhost:5000/task/' + tId, {
+          fetch('mongodb+srv://adpol95:MlWkg1a2F5o8FtCX@cluster0.izr2wlk.mongodb.net/toDoList?retryWrites=true&w=majority/task/' + tId, {
             method: patOrDel ? "PATCH" : "DELETE", // *GET, POST, PUT, DELETE, etc.
             mode: "cors",
             cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
@@ -65,7 +65,7 @@ getList.addEventListener("click", (event) => {
 const winText = document.getElementById("window");
 const butt = document.getElementById("adderTasks");
 butt.addEventListener("click", () => {
-  fetch('http://localhost:5000/task', {
+  fetch('mongodb+srv://adpol95:MlWkg1a2F5o8FtCX@cluster0.izr2wlk.mongodb.net/toDoList?retryWrites=true&w=majority/task', {
     method: "POST", // *GET, POST, PUT, DELETE, etc.
     mode: "cors",
     cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
