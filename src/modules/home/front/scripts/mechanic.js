@@ -40,6 +40,7 @@ getList.addEventListener("click", (event) => {
           const curTask = evidence.find(el => el._id === tId);
           fetch('https://todolist-adpol95.b4a.run/task/' + tId, {
             method: "PATCH", // *GET, POST, PUT, DELETE, etc.
+            mode: "no-cors",
             cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
             credentials: "same-origin", // include, *same-origin, omit
             headers: {
@@ -48,11 +49,11 @@ getList.addEventListener("click", (event) => {
             },
             redirect: "follow", // manual, *follow, error
             referrerPolicy: "no-referrer", // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
-            body: JSON.stringify({line: !curTask.line}), // body data type must match "Content-Type" header
+            body: JSON.stringify({ line: !curTask.line }), // body data type must match "Content-Type" header
           })
             .then((res) => {
-              console.log(evidence)
-              return res.json()
+              console.log('Task updated')
+              return res
             })
             .catch((err) => console.log(err))
         })
