@@ -25,7 +25,6 @@ function render() {
         firstStep.setAttribute("class", el.line ? "taskDone" : '');
         getList.appendChild(firstStep);
       })
-        .catch((err) => console.log(err))
     })
 }
 
