@@ -47,8 +47,10 @@ fetch('https://todolist-adpol95.b4a.run/task')
           referrerPolicy: "no-referrer", // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
           body: JSON.stringify({line: !curTask.line}), // body data type must match "Content-Type" header
         })
-          .then((res) => res.json())
-          .then((res) => res)
+          .then((res) => {
+            console.log(evidence)
+            return res.json()
+          })
           .catch((err) => console.log(err))
         // evidence.forEach((el, i) => {
         //   if (tId === el.id) {
