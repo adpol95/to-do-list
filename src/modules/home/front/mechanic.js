@@ -1,7 +1,7 @@
 const getList = document.getElementById("mainList");
 
 function render() {
-  fetch('https://todolist-adpol95.b4a.run/task')
+  fetch('/task')
     .then((res) => res.json())
     .then((evidence) => {
       getList.innerText = "";
@@ -34,11 +34,11 @@ getList.addEventListener("click", (event) => {
     if (event.target.nodeName === "BUTTON") {
       const patOrDel = event.target.innerText === "Done";
       const tId = event.target.id;
-      fetch('https://todolist-adpol95.b4a.run/task')
+      fetch('/task')
         .then((res) => res.json())
         .then((evidence) => {
           const curTask = patOrDel ? evidence.find(el => el._id === tId) : '';
-          fetch('https://todolist-adpol95.b4a.run/task/' + tId, {
+          fetch('task/' + tId, {
             method: patOrDel ? "PATCH" : "DELETE", // *GET, POST, PUT, DELETE, etc.
             mode: "cors",
             cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
@@ -65,7 +65,7 @@ getList.addEventListener("click", (event) => {
 const winText = document.getElementById("window");
 const butt = document.getElementById("adderTasks");
 butt.addEventListener("click", () => {
-  fetch('https://todolist-adpol95.b4a.run/task', {
+  fetch('/task', {
     method: "POST", // *GET, POST, PUT, DELETE, etc.
     mode: "cors",
     cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
