@@ -79,6 +79,9 @@ button {
     border-radius: 0.5rem;
     box-shadow: 0 0 5px 1px rgba(0,0,0,0.35);
 }
+.listZone li {
+    width: 50%;
+}
 .doneBut {
     background: #CDCBD6;
     color: #596235;
