@@ -6,23 +6,30 @@
     <link rel="stylesheet" href="styles/style1.css">
 </head>
 <body>
-<main class="actualToDoList">
-    <div class="title">
-        ToDo List
+<section class="to-do-list">
+    <div class="to-do-list__top">
+        <div class="to-do-list__title">
+            <p class="to-do-list__title-text">
+                ToDo List
+            </p>
+        </div>
+        <div class="to-do-list__date">
+        </div>
     </div>
-    <div class="date">
-
-    </div>
-    <div class="adderZone">
-        <label for="window"></label><input type="text" id="window" placeholder="Your goals">
-        <button id="adderTasks">
+    <div class="to-do-list__input">
+        <label>
+            <input class="to-do-list__input-area" type="text" placeholder="Your goals">
+        </label>
+        <button class="to-do-list__input-btn">
             Add to list
         </button>
     </div>
-    <div class="listZone">
-        <ul id="mainList" style="list-style-type: decimal"></ul>
+    <div class="to-do-list__item">
+        <ul class="to-do-list__list" style="list-style-type: decimal">
+
+        </ul>
     </div>
-</main>
+</section>
 <script src="mechanic.js"></script>
 </body>
 </html>

@@ -8,21 +8,24 @@ function render() {
       evidence.forEach(el => {
         const firstStep = document.createElement("li");
         firstStep.setAttribute("key", el._id);
-        const secondStep = document.createTextNode(el.value);
-        firstStep.appendChild(secondStep);
+        const p = document.createElement('p');
+        const pText = document.createTextNode(el.value);
+        p.setAttribute('class', 'to-do-list__list-item-text')
+        p.appendChild(pText);
+        firstStep.appendChild(p);
         const thirdStep = document.createElement("button");
         const fourthStep = document.createTextNode("Done");
-        thirdStep.setAttribute("class", "doneBut");
+        thirdStep.setAttribute("class", "to-do-list__btn-done");
         thirdStep.appendChild(fourthStep);
         firstStep.appendChild(thirdStep);
         thirdStep.setAttribute("id", el._id);
         const fifthStep = document.createElement("button");
-        fifthStep.setAttribute("class", "delBut");
+        fifthStep.setAttribute("class", "to-do-list__btn-del");
         const sixthStep = document.createTextNode("X");
         fifthStep.appendChild(sixthStep);
         firstStep.appendChild(fifthStep);
         fifthStep.setAttribute("id", el._id)
-        firstStep.setAttribute("class", el.line ? "taskDone" : '');
+        firstStep.setAttribute("class", el.line ? "to-do-list__list-item--active" : 'to-do-list__list-item--disable');
         getList.appendChild(firstStep);
       })
     })
@@ -62,8 +65,8 @@ getList.addEventListener("click", (event) => {
   }
 );
 
-const winText = document.getElementById("window");
-const butt = document.getElementById("adderTasks");
+const winText = document.getElementsByClassName("to-do-list__input-area")[0];
+const butt = document.getElementsByClassName("to-do-list__input-btn")[0];
 butt.addEventListener("click", () => {
   fetch('/task', {
     method: "POST", // *GET, POST, PUT, DELETE, etc.
@@ -88,5 +91,5 @@ butt.addEventListener("click", () => {
 })
 
 const currentDate = new Date();
-const getDate = document.getElementsByClassName("date")[0];
+const getDate = document.getElementsByClassName("to-do-list__date")[0];
 getDate.innerText = `Date: ${currentDate.getDate()}.${currentDate.getMonth() + 1}.${currentDate.getFullYear()}`
