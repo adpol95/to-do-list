@@ -1,4 +1,4 @@
-const getList = document.getElementById("mainList");
+const getList = document.getElementsByClassName("to-do-list__list");
 
 function render() {
   fetch('/task')
