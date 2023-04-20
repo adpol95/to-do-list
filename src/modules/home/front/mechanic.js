@@ -66,7 +66,7 @@ getList.addEventListener("click", (event) => {
 );
 
 const winText = document.getElementsByClassName("to-do-list__input-area")[0];
-const butt = document.getElementsByClassName("to-do-list__input-btn")[0];
+const butt = document.getElementsByClassName("to-do-list__to-do-list__btn--input")[0];
 butt.addEventListener("click", () => {
   fetch('/task', {
     method: "POST", // *GET, POST, PUT, DELETE, etc.
