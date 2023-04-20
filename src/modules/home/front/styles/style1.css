@@ -85,14 +85,13 @@ body {
     margin: 0;
 }
 
+.to-do-list__item-text--active {
+    text-decoration: line-through;
+}
 
 .to-do-list__items-text {
     margin: 0;
     display: inline-block;
-}
-
-.to-do-list__item-text--active {
-    text-decoration: line-through;
 }
 
 .to-do-list__btn--done {
