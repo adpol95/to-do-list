@@ -10,7 +10,7 @@ function render() {
         firstStep.setAttribute("key", el._id);
         const p = document.createElement('p');
         const pText = document.createTextNode(el.value);
-        p.setAttribute('class', 'to-do-list__items-text')
+        p.setAttribute('class', el.line ? " to-do-list__items-text to-do-list__item-text--active" : 'to-do-list__items-text')
         p.appendChild(pText);
         firstStep.appendChild(p);
         const thirdStep = document.createElement("button");
@@ -25,7 +25,6 @@ function render() {
         fifthStep.appendChild(sixthStep);
         firstStep.appendChild(fifthStep);
         fifthStep.setAttribute("id", el._id)
-        firstStep.setAttribute("class", el.line ? "to-do-list__item--active" : 'to-do-list__item--disable');
         getList.appendChild(firstStep);
       })
     })

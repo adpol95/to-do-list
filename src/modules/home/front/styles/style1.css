@@ -8,9 +8,6 @@ html {
         font-size: 22px;
     }
 }
-.to-do-list__item--active {
-    text-decoration: line-through;
-}
 
 body {
     background: #D96846;
@@ -92,6 +89,10 @@ body {
 .to-do-list__items-text {
     margin: 0;
     display: inline-block;
+}
+
+.to-do-list__item-text--active {
+    text-decoration: line-through;
 }
 
 .to-do-list__btn--done {
