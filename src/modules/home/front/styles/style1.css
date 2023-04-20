@@ -89,7 +89,7 @@ body {
     text-decoration: line-through;
 }
 
-.to-do-list__items-text {
+.to-do-list__item-text {
     margin: 0;
     display: inline-block;
 }

@@ -8,7 +8,7 @@ function render() {
       evidence.forEach(el => {
         const firstStep = document.createElement("li");
         firstStep.setAttribute("key", el._id);
-        firstStep.setAttribute("class", "to-do-list__li");
+        firstStep.setAttribute("class", "to-do-list__item");
         const p = document.createElement("p");
         const pText = document.createTextNode(el.value);
         p.setAttribute("class", el.line ? "to-do-list__item-text to-do-list__item-text--active" : "to-do-list__item-text")
